@@ -6,11 +6,14 @@ function Game() {
     self.currentPlayer = 0;
     self.player1Selections = new Array();
     self.player2Selections = new Array();
+    self.player1WinCount =0;
+    self.player2WinCount =0;
     self.move = 0;
 
     self.drawBoard = function () {
         var Parent = document.getElementById("game");
         var counter = 1;
+        var isWon =false;
         while (Parent.hasChildNodes()) {
             Parent.removeChild(Parent.firstChild);
         }
@@ -29,6 +32,7 @@ function Game() {
                 //col.innerHTML = counter;
 
                 col.addEventListener('click', function (e) {
+                    if(isWon){ self.resetGame(); return;}
                     if (self.currentPlayer == 0) {
                         this.innerHTML = "X";
                         this.style.color ="#6aa7ea"
@@ -47,6 +51,7 @@ function Game() {
                     var isWin = self.checkWinner();
 
                     if (isWin) {
+                        isWon = true;
                         var winner = document.getElementById("winner");
                         var h3 = document.createElement("h3");
                         h3.innerHTML = "Player " + (self.currentPlayer == 0 ? " X " : " O ") + "Wins.";
