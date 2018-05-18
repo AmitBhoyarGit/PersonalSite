@@ -114,7 +114,7 @@ function Game() {
                     win = true;
                     for(h=0;h<set.length;h++){
                         ele = document.getElementById(set[h]);
-                        ele.style.backgroundColor = 'red';
+                        ele.style.backgroundColor = '#94daa7';
                     }
                     break;
                 }
