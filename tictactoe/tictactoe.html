@@ -1,0 +1,48 @@
+<html>
+<title>Tic Tac Toe</title>
+
+<head>
+    <style>
+        
+
+        table {
+            border-spacing: 2px;
+            display: inline-block;
+        }
+
+        .center {
+            width:100%;
+            text-align: center;
+        }
+
+        td {
+            width: 100px;
+            height: 100px;
+            border: solid 1px #48afeb;
+            font-size: 50pt;
+            border-radius: 10px;
+            text-align: center;
+            font-family: monospace
+        }
+
+        td:hover {
+            background-color: #98d8fd;
+            cursor: pointer;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="gameContainer center">
+        <table id="game"></table>
+
+        <div id="winner"></div>
+        <div style="padding:10px">
+            <button id="reset">Reset Game</button>
+        </div>
+    </div>
+    <script src="tictactoe.js"></script>
+</body>
+
+</html>
