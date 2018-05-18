@@ -3,43 +3,56 @@
 
 <head>
     <style>
-        
+        body {
+            background-color: #FF9000;
+        }
 
         table {
-            border-spacing: 2px;
+            border-spacing: 10px;
             display: inline-block;
         }
 
         .center {
-            width:100%;
+            width: 100%;
             text-align: center;
         }
 
         td {
             width: 100px;
             height: 100px;
-            border: solid 1px #48afeb;
+            border: solid 1px white;
             font-size: 50pt;
             border-radius: 10px;
             text-align: center;
-            font-family: monospace
+            font-family: monospace;
+            background-color: white;
         }
 
         td:hover {
-            background-color: #98d8fd;
+            background-color: #f7e182;
             cursor: pointer;
         }
-        #winner h3{
-            font-family:cursive;
+
+        #winner h3 {
+            font-family: cursive;
+            color: white
+        }
+        #whosTurn h3 {
+            font-family: cursive;
+            color: white
+        }
+        #reset {
+            height: 20px;
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
+    <h1 class="center" style="font-family:fantasy; color: white"> Tic Tac Toe</h1>
     <div class="gameContainer center">
         <table id="game"></table>
-
+        <div id="whosTurn"></div>
         <div id="winner"></div>
         <div style="padding:10px">
             <button id="reset">Reset Game</button>

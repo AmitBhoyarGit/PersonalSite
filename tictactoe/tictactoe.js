@@ -31,11 +31,13 @@ function Game() {
                 col.addEventListener('click', function (e) {
                     if (self.currentPlayer == 0) {
                         this.innerHTML = "X";
+                        this.style.color ="#6aa7ea"
                         self.player1Selections.push(parseInt(this.id));
                         self.player1Selections.sort(function (a, b) { return a - b });
                     }
                     else {
-                        this.innerHTML = "O"
+                        this.innerHTML = "O";
+                        this.style.color ="#f76f6f"
                         self.player2Selections.push(parseInt(this.id));
                         self.player2Selections.sort(function (a, b) { return a - b; });
                     }
@@ -50,12 +52,30 @@ function Game() {
                         h3.innerHTML = "Player " + (self.currentPlayer == 0 ? " X " : " O ") + "Wins.";
                         winner.appendChild(h3);
 
+                        var w = document.getElementById("whosTurn");
+                            if (w.hasChildNodes()) {
+                                w.removeChild(w.firstChild);
+                            }
                     }
                     else {
                         if (self.currentPlayer == 0) {
+                            var w = document.getElementById("whosTurn");
+                            if (w.hasChildNodes()) {
+                                w.removeChild(w.firstChild);
+                            }
+                            var h3 = document.createElement("h3");
+                            h3.innerHTML = "Player 'O's Turn "
+                            w.appendChild(h3);
                             self.currentPlayer = 1;
                         }
                         else {
+                            var w = document.getElementById("whosTurn");
+                            if (w.hasChildNodes()) {
+                                w.removeChild(w.firstChild);
+                            }
+                            var h3 = document.createElement("h3");
+                            h3.innerHTML = "Player 'X's Turn "
+                            w.appendChild(h3);
                             self.currentPlayer = 0;
                         }
                     }
@@ -99,20 +119,20 @@ function Game() {
                     var found = false;
 
                     for (s = 0; s < playerSelection.length; s++) {
-                        if(set[r] == playerSelection[s]){
+                        if (set[r] == playerSelection[s]) {
                             found = true;
                             break;
                         }
                     }
 
-                    if(found == false){
-                        setFound =false;
+                    if (found == false) {
+                        setFound = false;
                         break;
                     }
                 }
-                if(setFound == true){
+                if (setFound == true) {
                     win = true;
-                    for(h=0;h<set.length;h++){
+                    for (h = 0; h < set.length; h++) {
                         ele = document.getElementById(set[h]);
                         ele.style.backgroundColor = '#94daa7';
                     }
