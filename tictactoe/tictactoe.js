@@ -6,17 +6,24 @@ function Game() {
     self.currentPlayer = 0;
     self.player1Selections = new Array();
     self.player2Selections = new Array();
-    self.player1WinCount =0;
-    self.player2WinCount =0;
+    self.player1WinCount = 0;
+    self.player2WinCount = 0;
     self.move = 0;
 
     self.drawBoard = function () {
         var Parent = document.getElementById("game");
         var counter = 1;
-        var isWon =false;
+        var isWon = false;
         while (Parent.hasChildNodes()) {
             Parent.removeChild(Parent.firstChild);
         }
+        var w = document.getElementById("whosTurn");
+        if (w.hasChildNodes()) {
+            w.removeChild(w.firstChild);
+        }
+        var h3 = document.createElement("h3");
+        h3.innerHTML = "Player 'X's Turn "
+        w.appendChild(h3);
 
         var resetBTN = document.getElementById("reset");
         resetBTN.addEventListener('click', function () { self.resetGame() });
@@ -32,16 +39,16 @@ function Game() {
                 //col.innerHTML = counter;
 
                 col.addEventListener('click', function (e) {
-                    if(isWon){ self.resetGame(); return;}
+                    if (isWon) { self.resetGame(); return; }
                     if (self.currentPlayer == 0) {
                         this.innerHTML = "X";
-                        this.style.color ="#6aa7ea"
+                        this.style.color = "#6aa7ea"
                         self.player1Selections.push(parseInt(this.id));
                         self.player1Selections.sort(function (a, b) { return a - b });
                     }
                     else {
                         this.innerHTML = "O";
-                        this.style.color ="#f76f6f"
+                        this.style.color = "#f76f6f"
                         self.player2Selections.push(parseInt(this.id));
                         self.player2Selections.sort(function (a, b) { return a - b; });
                     }
@@ -55,12 +62,17 @@ function Game() {
                         var winner = document.getElementById("winner");
                         var h3 = document.createElement("h3");
                         h3.innerHTML = "Player " + (self.currentPlayer == 0 ? " X " : " O ") + "Wins.";
+                        self.currentPlayer == 0 ? self.player1WinCount++ : self.player2WinCount++;
+                        var p1count = document.getElementById("p1count");
+                        var p2count = document.getElementById("p2count");
+                        p1count.innerHTML = self.player1WinCount;
+                        p2count.innerHTML = self.player2WinCount;
                         winner.appendChild(h3);
 
                         var w = document.getElementById("whosTurn");
-                            if (w.hasChildNodes()) {
-                                w.removeChild(w.firstChild);
-                            }
+                        if (w.hasChildNodes()) {
+                            w.removeChild(w.firstChild);
+                        }
                     }
                     else {
                         if (self.currentPlayer == 0) {

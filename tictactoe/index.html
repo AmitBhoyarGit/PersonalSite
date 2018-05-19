@@ -49,11 +49,16 @@
 </head>
 
 <body>
-    <h1 class="center" style="font-family:fantasy; color: white"> Tic Tac Toe</h1>
+    <h1 class="center" style="font-family:Verdana, Geneva, Tahoma, sans-serif; color: white"> Tic Tac Toe</h1>
     <div class="gameContainer center">
         <table id="game"></table>
         <div id="whosTurn"></div>
         <div id="winner"></div>
+        
+        <div class="row" style="color:white; font-family: Verdana, Geneva, Tahoma, sans-serif">
+            <div class="col col-md-6"><h5>Player X Win Count : <span id="p1count">0</span></h5></div>
+            <div class="col col-md-6"><h5>Player 0 Win Count : <span id="p2count">0</span></h5></div>
+        </div>
         <div style="padding:10px">
             <button id="reset" class="btn btn-primary btn-sm">Reset Game</button>
         </div>
